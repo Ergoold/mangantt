@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import Chart from '../Chart/Chart';
 import Input from '../Input/Input';
 import Lists from '../Lists/Lists';
@@ -6,12 +6,13 @@ import useManga from '../../hooks/useManga';
 import './gantt.css';
 
 function Gantt() {
-  const { lists, manga } = useManga();
+  const [userName, setUserName] = useState('');
+  const { lists, manga } = useManga(userName);
 
   return (
     <div className="gantt">
       <Chart manga={manga}></Chart>
-      <Input></Input>
+      <Input value={userName} onChange={setUserName}></Input>
       <Lists lists={lists}></Lists>
     </div>
   );

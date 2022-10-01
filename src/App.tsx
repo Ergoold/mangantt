@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Gantt from './components/Gantt/Gantt';
 import './app.css';
 
@@ -10,4 +10,4 @@ function App() {
   );
 }
 
-export default App;
+export default memo(App);
