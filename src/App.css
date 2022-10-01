@@ -1,4 +1,10 @@
+:root {
+  --background-color: #0b1622;
+}
+
 .app {
-    min-height: inherit;
-    background: #0b1622;
+  min-height: inherit;
+  background: var(--background-color);
+  display: grid;
+  place-items: center;
 }

@@ -1,0 +1,11 @@
+:root {
+  --foreground-color: #151f2e;
+}
+
+.gantt {
+  background: var(--foreground-color);
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 20px rgb(49 54 68 / 9%);
+  min-width: 50vw;
+  min-height: 80vh;
+}
