@@ -36,6 +36,7 @@ function useManga(userName: string) {
                     entry.media.title.romaji ??
                     entry.media.title.native,
                   color: entry.media.coverImage.color,
+                  image: entry.media.coverImage.medium,
                   start: entry.startedAt.month,
                   end: entry.completedAt.month,
                 } as Manga)
@@ -86,6 +87,7 @@ type Response = {
           };
           coverImage: {
             color: string | null;
+            medium: string | null;
           };
         };
       }[];
@@ -121,6 +123,7 @@ function query(userName: string) {
               }
               coverImage {
                 color
+                medium
               }
             }
           }
