@@ -1,4 +1,25 @@
 .gantt {
-  min-width: 50%;
+  min-width: 60%;
   min-height: 80%;
+  display: grid;
+  grid-template-rows: 1fr auto auto;
+  grid-template-columns: 16rem 1fr;
+  grid-template-areas: 'chart chart' 'name lists';
+  gap: 0.625rem;
+}
+
+@media (max-aspect-ratio: 8/5) {
+  .gantt {
+    min-width: 80%;
+  }
+}
+
+@media (max-aspect-ratio: 1/1) {
+  .gantt {
+    min-width: 95%;
+  }
+}
+
+.gantt .chart {
+  grid-area: chart;
 }
