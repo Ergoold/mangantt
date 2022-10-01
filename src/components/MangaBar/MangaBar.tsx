@@ -13,7 +13,9 @@ function MangaBar({ manga }: { manga: Manga }) {
       className={`${manga.start ? 'round-start' : ''} ${
         manga.end ? 'round-end' : ''
       }`}
-    ></div>
+    >
+      <img className="cover" src={manga.image} alt="Cover" />
+    </div>
   );
 }
 

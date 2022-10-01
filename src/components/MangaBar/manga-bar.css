@@ -11,3 +11,11 @@
   border-start-end-radius: 0.25rem;
   border-end-end-radius: 0.25rem;
 }
+
+.cover {
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
+  border-radius: 0.25rem;
+  object-fit: cover;
+  padding: 0rem;
+}
