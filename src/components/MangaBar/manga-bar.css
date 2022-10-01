@@ -1,0 +1,13 @@
+.manga {
+  border-radius: 0.25rem;
+}
+
+.round-start {
+  border-start-start-radius: 0.25rem;
+  border-end-start-radius: 0.25rem;
+}
+
+.round-end {
+  border-start-end-radius: 0.25rem;
+  border-end-end-radius: 0.25rem;
+}
