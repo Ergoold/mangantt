@@ -1,0 +1,10 @@
+.input {
+  all: initial;
+  display: block;
+  width: 100%;
+  background: var(--foreground-color);
+  border-radius: 0.25rem;
+  padding: calc((2rem - 1em * 1.2) / 2) 1rem;
+  color: var(--text-color);
+  font-family: 'Roboto', system-ui, sans-serif;
+}
