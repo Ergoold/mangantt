@@ -10,7 +10,7 @@ function MangaBar({ range }: { range: Range }) {
   );
 
   const covers = useMemo(
-    () => range.manga.map((manga) => <Cover manga={manga} />),
+    () => range.manga.map((manga) => <Cover key={manga.id} manga={manga} />),
     [range.manga]
   );
 
