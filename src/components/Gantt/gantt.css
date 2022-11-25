@@ -1,6 +1,6 @@
 .gantt {
-  min-width: 60%;
-  min-height: 80%;
+  max-width: 60%;
+  height: 80%;
   display: grid;
   grid-template-rows: 1fr auto auto;
   grid-template-columns: 16rem 1fr;
@@ -10,13 +10,13 @@
 
 @media (max-aspect-ratio: 8/5) {
   .gantt {
-    min-width: 80%;
+    max-width: 80%;
   }
 }
 
 @media (max-aspect-ratio: 1/1) {
   .gantt {
-    min-width: 95%;
+    max-width: 95%;
   }
 }
 

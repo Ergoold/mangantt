@@ -1,20 +1,34 @@
-import React, { memo } from 'react';
-import Manga from '../../types/Manga';
+import React, { memo, useMemo } from 'react';
+import Cover from '../Cover/Cover';
+import Range from '../../types/Range';
 import './manga-bar.css';
 
-function MangaBar({ manga }: { manga: Manga }) {
+function MangaBar({ range }: { range: Range }) {
+  const background = useMemo(
+    () => range.manga[0].color ?? '#ffffff',
+    [range.manga]
+  );
+
+  const covers = useMemo(
+    () => range.manga.map((manga) => <Cover manga={manga} />),
+    [range.manga]
+  );
+
   return (
     <div
       style={{
-        background: manga.color ?? '#ffffff',
-        gridColumnStart: (manga.start ?? 2) - 1,
-        gridColumnEnd: (manga.end ?? 10) + 1 - 1,
+        background,
+        gridColumnStart: (range.start ?? 2) - 1,
+        gridColumnEnd: (range.end ?? 12 - 1) + 1 - 1,
       }}
-      className={`${manga.start ? 'round-start' : ''} ${
-        manga.end ? 'round-end' : ''
+      className={`${range.start ? 'round-start' : ''} ${
+        range.end ? 'round-end' : ''
       }`}
     >
-      <img className="cover" src={manga.image} alt="Cover" />
+      <div>
+        <div className="covers">{covers}</div>
+        <div className="hover-covers round-start round-end">{covers}</div>
+      </div>
     </div>
   );
 }

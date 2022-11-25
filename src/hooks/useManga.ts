@@ -44,23 +44,6 @@ function useManga(userName: string) {
           )
           .flat();
 
-        const earliest =
-          Math.min(...manga.map((manga) => manga.start ?? Number.MAX_VALUE)) -
-          1;
-        const latest =
-          Math.max(...manga.map((manga) => manga.end ?? Number.MIN_VALUE)) + 1;
-        manga.sort((a, b) => {
-          if (!a.end && !a.start) return -1;
-          if (!b.end && !b.start) return 1;
-          if ((a.end ?? latest) < (b.start ?? earliest)) return -1;
-          if ((a.start ?? earliest) > (b.end ?? latest)) return 1;
-          if ((a.end ?? latest) > (b.end ?? latest)) return -1;
-          if ((a.end ?? latest) < (b.end ?? latest)) return 1;
-          if ((a.start ?? earliest) < (b.start ?? earliest)) return -1;
-          if ((a.start ?? earliest) > (b.start ?? earliest)) return 1;
-          return 0;
-        });
-
         return { lists: listNames, manga };
       } catch (e) {
         return { lists: [], manga: [] };
