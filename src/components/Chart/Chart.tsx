@@ -2,6 +2,7 @@ import React, { memo, useMemo } from 'react';
 import MangaBar from '../MangaBar/MangaBar';
 import Manga from '../../types/Manga';
 import Range from '../../types/Range';
+import sortRanges from '../../utils/sortRanges';
 import './chart.css';
 
 function Chart({ manga }: { manga: Manga[] }) {
@@ -25,26 +26,9 @@ function Chart({ manga }: { manga: Manga[] }) {
     );
 
     const rangesArray = Array.from(ranges.values());
+    sortRanges(rangesArray);
 
-    const earliest =
-      Math.min(...rangesArray.map((range) => range.start ?? Number.MAX_VALUE)) -
-      1;
-    const latest =
-      Math.max(...rangesArray.map((range) => range.end ?? Number.MIN_VALUE)) +
-      1;
-    const buckets: Range[][] = [];
-    for (let i = earliest; i < latest; i++) {
-      buckets[i] = [];
-    }
-    rangesArray.forEach((range) => {
-      if (!range.start) {
-        buckets[earliest].push(range);
-      } else {
-        buckets[range.start].push(range);
-      }
-    });
-
-    return Array.from(rangesArray.values()).map((range) => (
+    return rangesArray.map((range) => (
       <MangaBar key={range.manga[0].id} range={range}></MangaBar>
     ));
   }, [manga]);
