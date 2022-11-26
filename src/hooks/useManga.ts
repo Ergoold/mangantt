@@ -3,13 +3,13 @@ import { request, gql } from 'graphql-request';
 import Manga from '../types/Manga';
 
 type Result = {
-  lists: string[];
   manga: Manga[];
 };
 
+const whitelist = ['Completed', 'Reading'];
+
 function useManga(userName: string) {
   const [result, setResult] = useState<Result>({
-    lists: [],
     manga: [],
   });
 
@@ -23,9 +23,8 @@ function useManga(userName: string) {
 
         const lists = response.MediaListCollection.lists;
 
-        const listNames = lists.map((list) => list.name);
-
         const manga = lists
+          .filter(({ name }) => whitelist.includes(name))
           .map((list) =>
             list.entries.map(
               (entry) =>
@@ -44,9 +43,9 @@ function useManga(userName: string) {
           )
           .flat();
 
-        return { lists: listNames, manga };
+        return { manga };
       } catch (e) {
-        return { lists: [], manga: [] };
+        return { manga: [] };
       }
     })().then(setResult);
   }, [userName]);
@@ -92,10 +91,10 @@ function query(userName: string) {
           name
           entries {
             startedAt {
-              ...FullDate
+              ...Date
             }
             completedAt {
-              ...FullDate
+              ...Date
             }
             media {
               id
@@ -114,7 +113,7 @@ function query(userName: string) {
       }
     }
 
-    fragment FullDate on FuzzyDate {
+    fragment Date on FuzzyDate {
       year
       month
       day
