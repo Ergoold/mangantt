@@ -1,9 +1,0 @@
-.input {
-  all: initial;
-  display: block;
-  background: var(--foreground-color);
-  border-radius: 0.25rem;
-  padding: 0.5rem 1rem;
-  color: var(--text-color);
-  font-family: 'Roboto', system-ui, sans-serif;
-}
