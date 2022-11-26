@@ -1,18 +1,21 @@
 import React, { memo } from 'react';
 import { useParams } from 'react-router-dom';
 import Chart from '../Chart/Chart';
+import NotFound from '../NotFound/NotFound';
 import useManga from '../../hooks/useManga';
 import './gantt.css';
 
 function Gantt() {
   const { username } = useParams();
 
-  const { manga } = useManga(username!);
+  const result = useManga(username!);
 
-  return (
+  return result.status === 'success' ? (
     <div className="gantt">
-      <Chart manga={manga}></Chart>
+      <Chart manga={result.result} />
     </div>
+  ) : (
+    <NotFound />
   );
 }
 

@@ -1,20 +1,17 @@
 import { useEffect, useState } from 'react';
 import { request, gql } from 'graphql-request';
 import Manga from '../types/Manga';
-
-type Result = {
-  manga: Manga[];
-};
+import Result from '../types/Result';
 
 const whitelist = ['Completed', 'Reading'];
 
 function useManga(userName: string) {
-  const [result, setResult] = useState<Result>({
-    manga: [],
+  const [result, setResult] = useState<Result<Manga[]>>({
+    status: 'failure',
   });
 
   useEffect(() => {
-    (async () => {
+    (async (): Promise<Result<Manga[]>> => {
       try {
         const response = await request<Response>(
           'https://graphql.anilist.co',
@@ -43,9 +40,9 @@ function useManga(userName: string) {
           )
           .flat();
 
-        return { manga };
+        return { status: 'success', result: manga };
       } catch (e) {
-        return { manga: [] };
+        return { status: 'failure' };
       }
     })().then(setResult);
   }, [userName]);

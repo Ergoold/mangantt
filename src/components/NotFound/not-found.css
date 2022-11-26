@@ -1,0 +1,16 @@
+.not-found {
+  font-weight: 900;
+  line-height: 1;
+}
+
+@media (min-aspect-ratio: 2/1) {
+  .not-found {
+    font-size: 100vh;
+  }
+}
+
+@media (max-aspect-ratio: 2/1) {
+  .not-found {
+    font-size: 50vw;
+  }
+}
