@@ -1,8 +1,7 @@
 import React, { memo, useMemo } from 'react';
-import MangaBar from '../MangaBar/MangaBar';
-import Manga from '../../types/Manga';
-import sortRanges from '../../utils/sortRanges';
-import toRanges from '../../utils/toRanges';
+import { MangaBar } from '..';
+import { Manga } from '../../types';
+import { sortRanges, toRanges } from '../../utils';
 import './chart.css';
 
 function Chart({ manga }: { manga: Manga[] }) {

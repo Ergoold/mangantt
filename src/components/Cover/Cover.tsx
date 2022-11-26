@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import Manga from '../../types/Manga';
+import { Manga } from '../../types';
 import './cover.css';
 
 function Cover({ manga }: { manga: Manga }) {

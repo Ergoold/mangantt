@@ -1,6 +1,6 @@
 import React, { memo, useMemo } from 'react';
-import Cover from '../Cover/Cover';
-import Range from '../../types/Range';
+import { Cover } from '..';
+import { Range } from '../../types';
 import './manga-bar.css';
 
 const earliest = 2;

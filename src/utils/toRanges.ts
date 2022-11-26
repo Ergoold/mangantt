@@ -1,5 +1,4 @@
-import Manga from '../types/Manga';
-import Range from '../types/Range';
+import { Manga, Range } from '../types';
 
 const toRanges = (manga: Manga[]) => {
   const ranges = new Map<string, Range>();
