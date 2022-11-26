@@ -1,1 +1,1 @@
-export { default as useManga } from './useManga';
+export { useManga } from './useManga';

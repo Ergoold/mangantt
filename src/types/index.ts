@@ -1,4 +1,4 @@
-export type { default as FuzzyDate } from './FuzzyDate';
-export type { default as Manga } from './Manga';
-export type { default as Range } from './Range';
-export type { default as Result } from './Result';
+export type { FuzzyDate } from './FuzzyDate';
+export type { Manga } from './Manga';
+export type { Range } from './Range';
+export type { Result } from './Result';

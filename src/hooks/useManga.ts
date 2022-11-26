@@ -7,7 +7,7 @@ const apiUrl = 'https://graphql.anilist.co';
 
 const whitelist = ['Completed', 'Reading'];
 
-function useManga(username: string) {
+export const useManga = (username: string) => {
   const [result, setResult] = useState<Result<Manga[]>>({
     status: 'loading',
   });
@@ -49,7 +49,7 @@ function useManga(username: string) {
   }, [fetchManga, username]);
 
   return result;
-}
+};
 
 type Response = {
   MediaListCollection: {
@@ -108,5 +108,3 @@ function query(userName: string) {
     }
   `;
 }
-
-export default useManga;
