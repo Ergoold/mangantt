@@ -1,52 +1,52 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { request, gql } from 'graphql-request';
-import { Manga, Result } from '../types';
+import { FuzzyDate, Manga, Result } from '../types';
+import { getNumberOfMonths } from '../utils';
+
+const apiUrl = 'https://graphql.anilist.co';
 
 const whitelist = ['Completed', 'Reading'];
 
-function useManga(userName: string) {
+function useManga(username: string) {
   const [result, setResult] = useState<Result<Manga[]>>({
     status: 'loading',
   });
 
+  const fetchManga = useCallback(async (username: string) => {
+    try {
+      const response = await request<Response>(apiUrl, query(username));
+
+      const manga = response.MediaListCollection.lists
+        .filter(({ name }) => whitelist.includes(name))
+        .map((list) =>
+          list.entries.map(
+            (entry) =>
+              ({
+                id: entry.media.id,
+                name:
+                  entry.media.title.english ??
+                  entry.media.title.romaji ??
+                  entry.media.title.native,
+                color: entry.media.coverImage.color,
+                image: entry.media.coverImage.medium,
+                start: getNumberOfMonths(entry.startedAt),
+                end: getNumberOfMonths(entry.completedAt),
+              } as Manga)
+          )
+        )
+        .flat();
+
+      setResult({ status: 'success', result: manga });
+    } catch (e) {
+      setResult({ status: 'failure' });
+    }
+  }, []);
+
   useEffect(() => {
     setResult({ status: 'loading' });
 
-    (async (): Promise<Result<Manga[]>> => {
-      try {
-        const response = await request<Response>(
-          'https://graphql.anilist.co',
-          query(userName)
-        );
-
-        const lists = response.MediaListCollection.lists;
-
-        const manga = lists
-          .filter(({ name }) => whitelist.includes(name))
-          .map((list) =>
-            list.entries.map(
-              (entry) =>
-                ({
-                  id: entry.media.id,
-                  name:
-                    entry.media.title.english ??
-                    entry.media.title.romaji ??
-                    entry.media.title.native,
-                  color: entry.media.coverImage.color,
-                  image: entry.media.coverImage.medium,
-                  start: entry.startedAt.month,
-                  end: entry.completedAt.month,
-                } as Manga)
-            )
-          )
-          .flat();
-
-        return { status: 'success', result: manga };
-      } catch (e) {
-        return { status: 'failure' };
-      }
-    })().then(setResult);
-  }, [userName]);
+    fetchManga(username);
+  }, [fetchManga, username]);
 
   return result;
 }
@@ -75,12 +75,6 @@ type Response = {
   };
 };
 
-type FuzzyDate = {
-  year: number | null;
-  month: number | null;
-  day: number | null;
-};
-
 function query(userName: string) {
   return gql`
     {
@@ -89,10 +83,12 @@ function query(userName: string) {
           name
           entries {
             startedAt {
-              ...Date
+              year
+              month
             }
             completedAt {
-              ...Date
+              year
+              month
             }
             media {
               id
@@ -109,12 +105,6 @@ function query(userName: string) {
           }
         }
       }
-    }
-
-    fragment Date on FuzzyDate {
-      year
-      month
-      day
     }
   `;
 }

@@ -3,10 +3,15 @@ import { Cover } from '..';
 import { Range } from '../../types';
 import './manga-bar.css';
 
-const earliest = 2;
-const latest = 12;
-
-function MangaBar({ range }: { range: Range }) {
+function MangaBar({
+  range,
+  earliest,
+  latest,
+}: {
+  range: Range;
+  earliest: number;
+  latest: number;
+}) {
   const background = useMemo(
     () => range.manga[0].color ?? '#ffffff',
     [range.manga]
@@ -14,10 +19,10 @@ function MangaBar({ range }: { range: Range }) {
 
   const bounds = useMemo(
     () => ({
-      start: range.start ?? earliest,
+      start: range.start ?? earliest + 1,
       end: (range.end ?? latest - 1) + 1,
     }),
-    [range.start, range.end]
+    [range.start, earliest, range.end, latest]
   );
 
   const covers = useMemo(() => {
@@ -37,8 +42,8 @@ function MangaBar({ range }: { range: Range }) {
     <div
       style={{
         background,
-        gridColumnStart: bounds.start - earliest + 1,
-        gridColumnEnd: bounds.end - earliest + 1,
+        gridColumnStart: bounds.start - earliest,
+        gridColumnEnd: bounds.end - earliest,
       }}
       className={`${range.start ? 'round-start' : ''} ${
         range.end ? 'round-end' : ''
