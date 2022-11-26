@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
-import { Manga } from '../../types';
+import { CoverProps } from './types';
 import './cover.css';
 
-function Cover({ manga }: { manga: Manga }) {
+function Cover({ manga }: CoverProps) {
   return (
     <div key={manga.id} className="cover">
       <img

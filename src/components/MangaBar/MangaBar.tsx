@@ -1,17 +1,9 @@
 import React, { memo, useMemo } from 'react';
+import { MangaBarProps } from './types';
 import { Cover } from '..';
-import { Range } from '../../types';
 import './manga-bar.css';
 
-function MangaBar({
-  range,
-  earliest,
-  latest,
-}: {
-  range: Range;
-  earliest: number;
-  latest: number;
-}) {
+function MangaBar({ range, earliest, latest }: MangaBarProps) {
   const background = useMemo(
     () => range.manga[0].color ?? '#ffffff',
     [range.manga]
