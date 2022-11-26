@@ -1,8 +1,7 @@
 import React, { memo } from 'react';
 import { useParams } from 'react-router-dom';
-import Chart from '../Chart/Chart';
-import NotFound from '../NotFound/NotFound';
-import useManga from '../../hooks/useManga';
+import { Chart, NotFound } from '..';
+import { useManga } from '../../hooks';
 import './gantt.css';
 
 function Gantt() {

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { request, gql } from 'graphql-request';
-import Manga from '../types/Manga';
-import Result from '../types/Result';
+import { Manga, Result } from '../types';
 
 const whitelist = ['Completed', 'Reading'];
 

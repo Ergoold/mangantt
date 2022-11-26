@@ -1,4 +1,4 @@
-import Range from '../types/Range';
+import { Range } from '../types';
 
 const sortRanges = (ranges: Range[]) => {
   const columns = toColumns(ranges);

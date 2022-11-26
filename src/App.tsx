@@ -1,7 +1,6 @@
 import React, { memo } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Gantt from './components/Gantt/Gantt';
-import NotFound from './components/NotFound/NotFound';
+import { Gantt, NotFound } from './components';
 import './app.css';
 
 function App() {

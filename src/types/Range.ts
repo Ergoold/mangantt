@@ -1,4 +1,4 @@
-import Manga from './Manga';
+import { Manga } from '.';
 
 interface Range {
   start?: number;
