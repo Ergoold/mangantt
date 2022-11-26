@@ -6,10 +6,12 @@ const whitelist = ['Completed', 'Reading'];
 
 function useManga(userName: string) {
   const [result, setResult] = useState<Result<Manga[]>>({
-    status: 'failure',
+    status: 'loading',
   });
 
   useEffect(() => {
+    setResult({ status: 'loading' });
+
     (async (): Promise<Result<Manga[]>> => {
       try {
         const response = await request<Response>(

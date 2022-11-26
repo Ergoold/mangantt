@@ -7,6 +7,10 @@ type Failure = {
   status: 'failure';
 };
 
-type Result<Type> = Success<Type> | Failure;
+type Loading = {
+  status: 'loading';
+};
+
+type Result<Type> = Success<Type> | Failure | Loading;
 
 export default Result;
