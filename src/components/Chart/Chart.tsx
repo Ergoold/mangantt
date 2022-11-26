@@ -1,39 +1,21 @@
 import React, { memo, useMemo } from 'react';
 import MangaBar from '../MangaBar/MangaBar';
 import Manga from '../../types/Manga';
-import Range from '../../types/Range';
 import sortRanges from '../../utils/sortRanges';
+import toRanges from '../../utils/toRanges';
 import './chart.css';
 
 function Chart({ manga }: { manga: Manga[] }) {
-  const mangaElements = useMemo(() => {
-    const ranges = new Map<string, Range>();
-    manga.forEach(
-      (manga) => {
-        const key = JSON.stringify([manga.start, manga.end]);
-        const mangaInRange = ranges.get(key);
-        if (mangaInRange) {
-          mangaInRange.manga.push(manga);
-        } else {
-          ranges.set(key, {
-            start: manga.start,
-            end: manga.end,
-            manga: [manga],
-          });
-        }
-      },
-      [manga]
-    );
+  const mangaBars = useMemo(() => {
+    const ranges = toRanges(manga);
+    sortRanges(ranges);
 
-    const rangesArray = Array.from(ranges.values());
-    sortRanges(rangesArray);
-
-    return rangesArray.map((range) => (
+    return ranges.map((range) => (
       <MangaBar key={range.manga[0].id} range={range}></MangaBar>
     ));
   }, [manga]);
 
-  return <div className="chart">{mangaElements}</div>;
+  return <div className="chart">{mangaBars}</div>;
 }
 
 export default memo(Chart);
