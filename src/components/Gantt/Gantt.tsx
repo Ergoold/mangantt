@@ -1,17 +1,17 @@
-import React, { memo, useState } from 'react';
+import React, { memo } from 'react';
+import { useParams } from 'react-router-dom';
 import Chart from '../Chart/Chart';
-import Input from '../Input/Input';
 import useManga from '../../hooks/useManga';
 import './gantt.css';
 
 function Gantt() {
-  const [userName, setUserName] = useState('');
-  const { manga } = useManga(userName);
+  const { username } = useParams();
+
+  const { manga } = useManga(username!);
 
   return (
     <div className="gantt">
       <Chart manga={manga}></Chart>
-      <Input value={userName} onChange={setUserName}></Input>
     </div>
   );
 }
