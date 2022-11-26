@@ -1,4 +1,4 @@
-interface Manga {
+export interface Manga {
   id: string;
   name: string;
   color: string;
@@ -6,5 +6,3 @@ interface Manga {
   start?: number;
   end?: number;
 }
-
-export default Manga;

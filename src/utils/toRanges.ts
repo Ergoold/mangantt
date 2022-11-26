@@ -1,6 +1,6 @@
 import { Manga, Range } from '../types';
 
-const toRanges = (manga: Manga[]) => {
+export const toRanges = (manga: Manga[]) => {
   const ranges = new Map<string, Range>();
 
   manga.forEach((manga) => {
@@ -21,5 +21,3 @@ const toRanges = (manga: Manga[]) => {
 
   return Array.from(ranges.values());
 };
-
-export default toRanges;

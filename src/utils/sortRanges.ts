@@ -1,7 +1,7 @@
 import { getEarliest, getLatest } from './rangesUtils';
 import { Range } from '../types';
 
-const sortRanges = (ranges: Range[]) => {
+export const sortRanges = (ranges: Range[]) => {
   const columns = toColumns(ranges);
   const rows = toRows(columns);
 
@@ -92,5 +92,3 @@ const compareRanges =
 
 const indexOfArrayIncluding = <Type>(arrays: Type[][], element: Type) =>
   arrays.findIndex((array) => array && array?.includes(element));
-
-export default sortRanges;

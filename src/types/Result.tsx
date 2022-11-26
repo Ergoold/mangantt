@@ -11,6 +11,4 @@ type Loading = {
   status: 'loading';
 };
 
-type Result<Type> = Success<Type> | Failure | Loading;
-
-export default Result;
+export type Result<Type> = Success<Type> | Failure | Loading;
