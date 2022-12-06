@@ -5,7 +5,7 @@ import { Loading } from '../../assets';
 import { useManga } from '../../hooks';
 import './gantt.css';
 
-function Gantt() {
+const Gantt = () => {
   const { username } = useParams();
 
   const result = useManga(username!);
@@ -19,6 +19,6 @@ function Gantt() {
   ) : (
     <NotFound />
   );
-}
+};
 
 export default memo(Gantt);
