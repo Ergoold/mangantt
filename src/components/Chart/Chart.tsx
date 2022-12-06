@@ -1,8 +1,7 @@
 import React, { memo, useMemo } from 'react';
 import { ChartProps } from './types';
 import { MangaBar } from '..';
-import { sortRanges, toRanges } from '../../utils';
-import { getEarliest, getLatest } from '../../utils';
+import { getEarliest, getLatest, sortRanges, toRanges } from '../../utils';
 import './chart.css';
 
 function Chart({ manga }: ChartProps) {
