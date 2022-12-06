@@ -3,7 +3,7 @@ import { MangaBarProps } from './types';
 import { Cover } from '..';
 import './manga-bar.css';
 
-function MangaBar({ range, earliest, latest }: MangaBarProps) {
+const MangaBar = ({ range, earliest, latest }: MangaBarProps) => {
   const bounds = useMemo(
     () => ({
       start: range.start ?? earliest + 1,
@@ -51,6 +51,6 @@ function MangaBar({ range, earliest, latest }: MangaBarProps) {
       </div>
     </div>
   );
-}
+};
 
 export default memo(MangaBar);
