@@ -1,0 +1,1 @@
+export { useManga } from './useManga';
