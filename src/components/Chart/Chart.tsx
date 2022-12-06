@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import { ChartProps } from './types';
 import { MangaBar } from '..';
 import { getEarliest, getLatest, sortRanges, toRanges } from '../../utils';
