@@ -1,4 +1,4 @@
-import { getEarliest, getLatest } from './rangesUtils';
+import { getEarliest, getLatest } from '.';
 import { Range } from '../types';
 
 export const sortRanges = (ranges: Range[]) => {
