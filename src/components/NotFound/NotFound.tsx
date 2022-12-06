@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import './not-found.css';
 
 const NotFound = () => <div className="not-found">404</div>;

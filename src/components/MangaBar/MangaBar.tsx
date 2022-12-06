@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import { MangaBarProps } from './types';
 import { Cover } from '..';
 import './manga-bar.css';
