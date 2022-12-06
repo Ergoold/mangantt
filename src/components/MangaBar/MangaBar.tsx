@@ -4,11 +4,6 @@ import { Cover } from '..';
 import './manga-bar.css';
 
 function MangaBar({ range, earliest, latest }: MangaBarProps) {
-  const background = useMemo(
-    () => range.manga[0].color ?? '#ffffff',
-    [range.manga]
-  );
-
   const bounds = useMemo(
     () => ({
       start: range.start ?? earliest + 1,
@@ -30,17 +25,22 @@ function MangaBar({ range, earliest, latest }: MangaBarProps) {
     };
   }, [range.manga, bounds]);
 
+  const style = useMemo(
+    () => ({
+      background: range.manga[0].color ?? '#ffffff',
+      gridColumnStart: bounds.start - earliest,
+      gridColumnEnd: bounds.end - earliest,
+    }),
+    [range.manga, bounds, earliest]
+  );
+
+  const className = useMemo(
+    () => `${range.start ? 'round-start' : ''} ${range.end ? 'round-end' : ''}`,
+    [range.start, range.end]
+  );
+
   return (
-    <div
-      style={{
-        background,
-        gridColumnStart: bounds.start - earliest,
-        gridColumnEnd: bounds.end - earliest,
-      }}
-      className={`${range.start ? 'round-start' : ''} ${
-        range.end ? 'round-end' : ''
-      }`}
-    >
+    <div style={style} className={className}>
       <div>
         <div className="covers">{covers.shown}</div>
         {covers.hover.length > 0 && (
