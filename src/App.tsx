@@ -9,7 +9,7 @@ function App() {
       <div className="app">
         <Routes>
           <Route path="/:username" element={<Gantt />} />
-          <Route path="/" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </BrowserRouter>
