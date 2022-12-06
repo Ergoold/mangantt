@@ -5,7 +5,7 @@ export const sortRanges = (ranges: Range[]) => {
   const columns = toColumns(ranges);
   const rows = toRows(columns);
 
-  ranges.sort(compareRanges(rows, columns));
+  return [...ranges].sort(compareRanges(rows, columns));
 };
 
 const toColumns = (ranges: Range[]) => {

@@ -11,9 +11,7 @@ function Chart({ manga }: ChartProps) {
     const earliest = getEarliest(ranges);
     const latest = getLatest(ranges);
 
-    sortRanges(ranges);
-
-    return ranges.map((range) => (
+    return sortRanges(ranges).map((range) => (
       <MangaBar
         key={range.manga[0].id}
         range={range}
