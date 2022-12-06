@@ -1,7 +1,7 @@
 import { Manga } from '.';
 
 export interface Range {
-  start?: number;
-  end?: number;
+  start: number | null;
+  end: number | null;
   manga: Manga[];
 }
