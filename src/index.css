@@ -14,7 +14,7 @@ body {
 
 #root {
   min-height: 100vh;
-  font-family: 'Roboto', system-ui, sans-serif;
+  font-family: Roboto, system-ui, sans-serif;
   user-select: none;
   color: var(--text-color);
   overflow: hidden;
