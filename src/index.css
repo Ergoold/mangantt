@@ -4,6 +4,8 @@
   --background-color: #0b1622;
   --foreground-color: #151f2e;
   --text-color: #9fadbd;
+
+  --cover-size: 2.5rem;
 }
 
 body {
