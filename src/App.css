@@ -1,6 +1,6 @@
 .app {
-  min-block-size: inherit;
-  background: var(--background-color);
   display: grid;
   place-items: center;
+  min-block-size: inherit;
+  background: var(--background-color);
 }
