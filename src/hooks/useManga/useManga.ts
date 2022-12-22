@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Manga, Result } from '../../types';
 import { fetchManga } from './fetchManga';
+import { Manga, Result } from '../../types';
 
 export const useManga = (username: string) => {
   const [result, setResult] = useState<Result<Manga[]>>({
