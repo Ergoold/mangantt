@@ -1,6 +1,14 @@
 {
   "extends": ["stylelint-config-standard", "stylelint-config-prettier"],
   "rules": {
-    "custom-property-empty-line-before": null
+    "custom-property-empty-line-before": null,
+    "property-disallowed-list": [
+      "width",
+      "height",
+      "min-width",
+      "min-height",
+      "max-width",
+      "max-height"
+    ]
   }
 }
