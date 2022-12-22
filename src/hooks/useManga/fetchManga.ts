@@ -33,8 +33,8 @@ export const fetchManga = async (username: string) => {
   }
 };
 
-const query = (userName: string) => {
-  return gql`
+const query = (userName: string) =>
+  gql`
     {
       MediaListCollection(userName: "${userName}", type: MANGA) {
         lists {
@@ -65,4 +65,3 @@ const query = (userName: string) => {
       }
     }
   `;
-};
