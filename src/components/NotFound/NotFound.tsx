@@ -1,6 +1,4 @@
 import { memo } from 'react';
 import './not-found.css';
 
-const NotFound = () => <div className="not-found">404</div>;
-
-export default memo(NotFound);
+export const NotFound = memo(() => <div className="not-found">404</div>);

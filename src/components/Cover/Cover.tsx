@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { CoverProps } from './types';
 import './cover.css';
 
-const Cover = ({ manga }: CoverProps) => (
+export const Cover = memo(({ manga }: CoverProps) => (
   <div key={manga.id} className="cover">
     <img
       className="cover-image"
@@ -10,6 +10,4 @@ const Cover = ({ manga }: CoverProps) => (
       alt={`${manga.name} Cover`}
     />
   </div>
-);
-
-export default memo(Cover);
+));

@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Gantt, NotFound } from './components';
 import './app.css';
 
-const App = () => (
+export const App = memo(() => (
   <BrowserRouter>
     <div className="app">
       <Routes>
@@ -12,6 +12,4 @@ const App = () => (
       </Routes>
     </div>
   </BrowserRouter>
-);
-
-export default memo(App);
+));

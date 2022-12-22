@@ -1,1 +1,1 @@
-export { default } from './MangaBar';
+export { MangaBar } from './MangaBar';
