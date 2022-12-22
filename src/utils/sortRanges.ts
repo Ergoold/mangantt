@@ -1,4 +1,4 @@
-import { getEarliest, getLatest } from '.';
+import { getBounds } from '.';
 import { Range } from '../types';
 
 export const sortRanges = (ranges: Range[]) => {
@@ -9,8 +9,7 @@ export const sortRanges = (ranges: Range[]) => {
 };
 
 const toColumns = (ranges: Range[]) => {
-  const earliest = getEarliest(ranges);
-  const latest = getLatest(ranges);
+  const { earliest, latest } = getBounds(ranges);
 
   const columns = fill<Range[]>(() => [], earliest, latest);
 

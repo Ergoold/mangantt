@@ -1,14 +1,13 @@
 import { memo, useMemo } from 'react';
 import { ChartProps } from './types';
 import { MangaBar } from '..';
-import { getEarliest, getLatest, sortRanges, toRanges } from '../../utils';
+import { getBounds, sortRanges, toRanges } from '../../utils';
 import './chart.css';
 
 export const Chart = memo(({ manga }: ChartProps) => {
   const mangaBars = useMemo(() => {
     const ranges = toRanges(manga);
-    const earliest = getEarliest(ranges);
-    const latest = getLatest(ranges);
+    const { earliest, latest } = getBounds(ranges);
 
     return sortRanges(ranges).map((range) => (
       <MangaBar
