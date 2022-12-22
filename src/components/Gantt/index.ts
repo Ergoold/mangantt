@@ -1,1 +1,1 @@
-export { default } from './Gantt';
+export { Gantt } from './Gantt';

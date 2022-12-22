@@ -4,7 +4,7 @@ import { MangaBar } from '..';
 import { getEarliest, getLatest, sortRanges, toRanges } from '../../utils';
 import './chart.css';
 
-const Chart = ({ manga }: ChartProps) => {
+export const Chart = memo(({ manga }: ChartProps) => {
   const mangaBars = useMemo(() => {
     const ranges = toRanges(manga);
     const earliest = getEarliest(ranges);
@@ -21,6 +21,4 @@ const Chart = ({ manga }: ChartProps) => {
   }, [manga]);
 
   return <div className="chart">{mangaBars}</div>;
-};
-
-export default memo(Chart);
+});

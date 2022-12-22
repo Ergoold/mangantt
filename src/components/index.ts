@@ -1,5 +1,5 @@
-export { default as Chart } from './Chart';
-export { default as Cover } from './Cover';
-export { default as Gantt } from './Gantt';
-export { default as MangaBar } from './MangaBar';
-export { default as NotFound } from './NotFound';
+export { Chart } from './Chart';
+export { Cover } from './Cover';
+export { Gantt } from './Gantt';
+export { MangaBar } from './MangaBar';
+export { NotFound } from './NotFound';
