@@ -9,27 +9,31 @@
 }
 
 .covers {
-  padding: 0.5rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, 2.5rem);
   gap: 0.5rem;
+  padding: 0.5rem;
 }
 
 .hover-covers {
-  background: var(--background-color);
   position: relative;
   top: 0.5rem;
   left: 0;
-  visibility: hidden;
-  opacity: 0;
-  padding: 0.5rem;
+
+  overflow: visible;
   display: grid;
   grid-auto-flow: row;
   grid-template-columns: 2.5rem;
   gap: 0.5rem;
+
   inline-size: min-content;
+  padding: 0.5rem;
+
+  visibility: hidden;
+  opacity: 0;
+  background: var(--background-color);
+
   transition: all 350ms ease;
-  overflow: visible;
 }
 
 .hover-covers:hover,

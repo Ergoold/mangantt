@@ -1,5 +1,9 @@
 {
-  "extends": ["stylelint-config-standard", "stylelint-config-prettier"],
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-prettier",
+    "stylelint-config-clean-order"
+  ],
   "rules": {
     "custom-property-empty-line-before": null,
     "property-disallowed-list": [
