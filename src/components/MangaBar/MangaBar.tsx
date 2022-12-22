@@ -44,7 +44,7 @@ export const MangaBar = memo(({ range, earliest, latest }: MangaBarProps) => {
       <div>
         <div className="covers">{covers.shown}</div>
         {covers.hover.length > 0 && (
-          <div className="hover-covers round-start round-end">
+          <div className="hover covers round-start round-end">
             {covers.hover}
           </div>
         )}
