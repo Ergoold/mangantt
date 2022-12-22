@@ -21,7 +21,7 @@
   background: var(--background-color);
   position: relative;
   top: 0.5rem;
-  left: 0rem;
+  left: 0;
   visibility: hidden;
   opacity: 0;
   padding: 0.5rem;
@@ -34,8 +34,8 @@
   overflow: visible;
 }
 
-.covers:hover + .hover-covers,
-.hover-covers:hover {
+.hover-covers:hover,
+.covers:hover + .hover-covers {
   visibility: visible;
   opacity: 1;
 }
