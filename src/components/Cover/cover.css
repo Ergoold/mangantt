@@ -1,10 +1,10 @@
 .cover {
-  max-block-size: 2.5rem;
+  max-block-size: var(--cover-size);
 }
 
 .cover-image {
-  min-inline-size: 2.5rem;
-  max-block-size: 2.5rem;
+  min-inline-size: var(--cover-size);
+  max-block-size: var(--cover-size);
   border-radius: 0.25rem;
   object-fit: cover;
 }
