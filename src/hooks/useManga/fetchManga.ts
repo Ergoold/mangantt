@@ -1,8 +1,7 @@
 import { request, gql } from 'graphql-request';
 import { Response } from './types';
+import { apiUrl } from '../../config';
 import { getNumberOfMonths } from '../../utils';
-
-const apiUrl = 'https://graphql.anilist.co';
 
 const whitelist = ['Completed', 'Reading'];
 
