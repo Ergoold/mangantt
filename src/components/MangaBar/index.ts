@@ -1,0 +1,1 @@
+export { MangaBar } from './MangaBar';

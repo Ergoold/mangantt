@@ -1,11 +1,13 @@
-import React from 'react';
+import { memo } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { Gantt, NotFound } from './components';
 import './app.css';
 
-function App() {
-  return (
-    <div className="app">
-    </div>
-  );
-}
-
-export default App;
+export const App = memo(() => (
+  <div className="app">
+    <Routes>
+      <Route path="/:username" element={<Gantt />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  </div>
+));

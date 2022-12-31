@@ -1,4 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+  --background-color: #0b1622;
+  --foreground-color: #151f2e;
+  --text-color: #9fadbd;
+
+  --cover-size: 2.5rem;
+}
+
 body {
   margin: 0;
-  font-family: 'Roboto', system-ui, sans-serif;
+}
+
+#root {
+  user-select: none;
+
+  overflow: hidden;
+
+  min-block-size: 100vh;
+
+  font-family: Roboto, system-ui, sans-serif;
+  color: var(--text-color);
 }
