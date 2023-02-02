@@ -40,8 +40,8 @@ const compareLengths = (a: Range, b: Range) => {
   return 0;
 };
 
-const length = (r: Range) =>
-  (r.end ?? Number.MAX_SAFE_INTEGER) - (r.start ?? Number.MIN_SAFE_INTEGER);
+const length = ({ start, end }: Range) =>
+  (end ?? Number.MAX_SAFE_INTEGER) - (start ?? Number.MIN_SAFE_INTEGER);
 
 const toRows = (columns: Range[][]) => {
   const rows: Range[][] = [];
@@ -69,8 +69,8 @@ const slot = (column: Range[], rows: Range[][]) => {
   });
 };
 
-const endsBeforeStartOf = (row: Range[], range: Range) =>
-  (row[row.length - 1].end ?? Infinity) < (range.start ?? -Infinity);
+const endsBeforeStartOf = (row: Range[], { start }: Range) =>
+  (row[row.length - 1].end ?? Infinity) < (start ?? -Infinity);
 
 const compareRanges =
   (rows: Range[][], columns: Range[][]) => (a: Range, b: Range) => {
