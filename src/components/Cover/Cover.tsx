@@ -3,7 +3,7 @@ import { CoverProps } from './types';
 import './cover.css';
 
 export const Cover = memo(({ manga: { id, name, image } }: CoverProps) => (
-  <div key={id} className="cover">
+  <div className="cover">
     <img
       className="cover-image"
       src={image ?? undefined}
