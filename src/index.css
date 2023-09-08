@@ -1,11 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
 :root {
   --background-color: #0b1622;
   --foreground-color: #151f2e;
   --text-color: #9fadbd;
 
   --cover-size: 2.5rem;
+  --scrollbar-size: 0.5rem;
 }
 
 body {
@@ -21,4 +26,17 @@ body {
 
   font-family: Roboto, system-ui, sans-serif;
   color: var(--text-color);
+}
+
+::-webkit-scrollbar {
+  inline-size: var(--scrollbar-size);
+  block-size: var(--scrollbar-size);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--foreground-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #474c6a;
 }
