@@ -10,7 +10,10 @@
   --text-color: #9fadbd;
 
   --cover-size: 2.5rem;
+
   --scrollbar-size: 0.5rem;
+  --scrollbar-track-color: var(--foreground-color);
+  --scrollbar-thumb-color: #474c6a;
 }
 
 body {
@@ -34,9 +37,9 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--foreground-color);
+  background: var(--scrollbar-track-color);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #474c6a;
+  background: var(--scrollbar-thumb-color);
 }
