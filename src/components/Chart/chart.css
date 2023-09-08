@@ -4,6 +4,7 @@
   grid-auto-rows: 3.5rem;
   gap: 0.5rem;
 
+  min-inline-size: fit-content;
   padding: 0.5rem;
 
   background: var(--foreground-color);
