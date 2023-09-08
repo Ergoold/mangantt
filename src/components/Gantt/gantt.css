@@ -1,16 +1,16 @@
 .gantt {
-  max-inline-size: 60%;
-  max-block-size: 80%;
+  max-inline-size: 60vw;
+  max-block-size: 80vh;
 }
 
 @media (max-aspect-ratio: 8/5) {
   .gantt {
-    max-inline-size: 80%;
+    max-inline-size: 80vw;
   }
 }
 
 @media (max-aspect-ratio: 1/1) {
   .gantt {
-    max-inline-size: 95%;
+    max-inline-size: 95vw;
   }
 }
