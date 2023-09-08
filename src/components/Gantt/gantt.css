@@ -1,6 +1,5 @@
 .gantt {
-  overflow-x: scroll;
-  overflow-y: hidden;
+  overflow: scroll hidden;
   max-inline-size: 60vw;
   max-block-size: 80vh;
 }
