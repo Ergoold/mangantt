@@ -1,6 +1,7 @@
 {
   "extends": ["react-app"],
   "rules": {
+    "quotes": ["error", "single"],
     "import/no-default-export": ["error"]
   }
 }

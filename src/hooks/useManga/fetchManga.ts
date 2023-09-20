@@ -1,4 +1,4 @@
-import { request, gql } from 'graphql-request';
+import { gql, request } from 'graphql-request';
 import { Response } from './types';
 import { apiUrl } from '../../config';
 import { getNumberOfMonths } from '../../utils';
@@ -14,8 +14,7 @@ export const fetchManga = async (username: string) => {
       .map((list) =>
         list.entries.map((entry) => ({
           id: entry.media.id,
-          name:
-            entry.media.title.english ??
+          name: entry.media.title.english ??
             entry.media.title.romaji ??
             entry.media.title.native,
           color: entry.media.coverImage.color,
