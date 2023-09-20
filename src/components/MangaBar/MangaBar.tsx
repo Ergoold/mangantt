@@ -1,51 +1,40 @@
-import { memo, useMemo } from 'react';
+import { memo } from 'react';
 import { MangaBarProps } from './types';
 import { Cover } from '..';
 import './manga-bar.css';
 
 export const MangaBar = memo(
   ({ range: { start, end, manga }, earliest, latest }: MangaBarProps) => {
-    const bounds = useMemo(
-      () => ({
-        start: start ?? earliest + 1,
-        end: (end ?? latest - 1) + 1,
-      }),
-      [start, earliest, end, latest]
-    );
+    const barStart = start ?? earliest + 1;
+    const barEnd = (end ?? latest - 1) + 1;
+    const barSize = barEnd - barStart;
 
-    const { shown, hover } = useMemo(() => {
-      const allCovers = manga.map((manga) => (
-        <Cover key={manga.id} manga={manga} />
-      ));
+    const mangaCount = manga.length;
+    const largeCoverCount = mangaCount > barSize ? barSize - 1 : mangaCount;
 
-      const shownCovers = bounds.end - bounds.start;
+    const covers = manga.map((manga, i) => (
+      <Cover key={manga.id} manga={manga} />
+    ));
 
-      return {
-        shown: allCovers.slice(0, shownCovers),
-        hover: allCovers.slice(shownCovers),
-      };
-    }, [manga, bounds]);
+    const largeCovers = covers.slice(0, largeCoverCount);
+    const smallCovers = covers.slice(largeCoverCount);
 
-    const style = useMemo(
-      () => ({
-        background: manga[0].color ?? '#ffffff',
-        gridColumnStart: bounds.start - earliest,
-        gridColumnEnd: bounds.end - earliest,
-      }),
-      [manga, bounds, earliest]
-    );
+    const style = {
+      background: manga[0].color ?? '#ffffff',
+      gridColumnStart: barStart - earliest,
+      gridColumnEnd: barEnd - earliest,
+    };
 
-    const className = useMemo(
-      () => `${start ? 'round-start' : ''} ${end ? 'round-end' : ''}`,
-      [start, end]
-    );
+    const className = `${start ? 'round-start' : ''} ${end ? 'round-end' : ''}`;
 
     return (
       <div style={style} className={className}>
         <div>
-          <div className="covers">{shown}</div>
-          {hover.length > 0 && (
-            <div className="hover covers round-start round-end">{hover}</div>
+          {largeCovers.length > 0 && (
+            <div className="covers">{largeCovers}</div>
+          )}
+          {smallCovers.length > 0 && (
+            <div className="covers small-covers">{smallCovers}</div>
           )}
         </div>
       </div>
