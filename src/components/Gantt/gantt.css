@@ -2,6 +2,7 @@
   overflow: scroll hidden;
   max-inline-size: 60vw;
   max-block-size: 80vh;
+  border-radius: 0.25rem;
 }
 
 @media (max-aspect-ratio: 8/5) {
