@@ -11,20 +11,16 @@ export const fetchManga = async (username: string) => {
 
     const manga = response.MediaListCollection.lists
       .filter(({ name }) => whitelist.includes(name))
-      .map((list) =>
-        list.entries.map((entry) => ({
-          id: entry.media.id,
-          name:
-            entry.media.title.english ??
-            entry.media.title.romaji ??
-            entry.media.title.native,
-          color: entry.media.coverImage.color,
-          image: entry.media.coverImage.medium,
-          start: getNumberOfMonths(entry.startedAt),
-          end: getNumberOfMonths(entry.completedAt),
+      .flatMap(({ entries }) =>
+        entries.map(({ startedAt, completedAt, media }) => ({
+          id: media.id,
+          name: media.title.english ?? media.title.romaji ?? media.title.native,
+          color: media.coverImage.color,
+          image: media.coverImage.medium,
+          start: getNumberOfMonths(startedAt),
+          end: getNumberOfMonths(completedAt),
         })),
-      )
-      .flat();
+      );
 
     return { status: 'success', result: manga } as const;
   } catch (e) {

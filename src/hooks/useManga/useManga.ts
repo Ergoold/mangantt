@@ -12,9 +12,11 @@ export const useManga = (username: string) => {
   };
 
   useEffect(() => {
-    setResult({ status: 'loading' });
-
     setManga(username);
+
+    return () => {
+      setResult({ status: 'loading' });
+    };
   }, [username]);
 
   return result;
